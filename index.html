@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mokanik — Your Venue, Your Moment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Colors from Figma */
+      --color-bg-page: #F7F7F7;
+      --color-white: #FFFFFF;
+      --color-black: #000000;
+      --color-text-primary: #101828;
+      --color-text-body: #525252;
+      --color-text-muted: #737373;
+      --color-text-step: #6A7282;
+      --color-text-footer-label: #A2A2A2;
+      --color-text-footer-body: #171717;
+      --color-text-download-sub: #D0D0D0;
+      --color-accent: #FF395C;
+      --color-accent-dark: #FF2056;
+      --color-accent-soft: rgba(255, 57, 92, 0.1);
+      --color-border-card: rgba(0, 0, 0, 0.05);
+      --color-border-step: #F2F2F2;
+      --color-border-input: #E5E7EB;
+      --color-input-bg: #F9FAFB;
+      --color-input-placeholder: #D1D5DC;
+      --color-step-number: #707070;
+      --color-social-bg: #FAFAFA;
+      --color-social-border: rgba(143, 146, 146, 0.24);
+      --color-vendor-gradient-start: rgba(239, 135, 127, 1);
+      --color-vendor-gradient-end: rgba(199, 78, 70, 1);
+      --color-vendor-text-sub: rgba(255, 255, 255, 0.7);
+      --color-vendor-text-list: rgba(255, 255, 255, 0.8);
+      --color-vendor-circle: rgba(255, 255, 255, 0.2);
+      --color-vendor-icon-bg: rgba(255, 255, 255, 0.15);
+      --color-nizek-dot: #FF326A;
+      --color-nizek-text: #111111;
+
+      /* Typography from Figma */
+      --font-inter-tight: 'Inter Tight', sans-serif;
+      --font-inter: 'Inter', sans-serif;
+      --font-arabic: 'Noto Sans Arabic', 'Inter Tight', sans-serif;
+      --font-cradley: 'CradleyTitle', Georgia, 'Times New Roman', serif;
+      --font-roboto: 'Roboto', sans-serif;
+
+      --container-max: 1440px;
+      --content-padding: 80px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-inter-tight);
+      background: var(--color-bg-page);
+      color: var(--color-black);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+
+    .page {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      background: var(--color-bg-page);
+      overflow: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 968px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 16%;
+      z-index: 0;
+    }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%);
+      z-index: 1;
+    }
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      width: min(992px, calc(100% - 48px));
+      padding: 120px 24px 140px;
+      text-align: center;
+    }
+    .hero__logo {
+      width: 363.38px;
+      max-width: 100%;
+      height: auto;
+    }
+    .hero__divider {
+      width: 438.5px;
+      max-width: 100%;
+      height: 10px;
+    }
+    .hero__title {
+      font-family: var(--font-cradley);
+      font-weight: 400;
+      font-size: 92px;
+      line-height: 104%;
+      color: var(--color-white);
+      white-space: pre-line;
+    }
+    .hero__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 180px;
+      height: 48px;
+      padding: 8px 22px;
+      border-radius: 100px;
+      font-family: var(--font-inter-tight);
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 26px;
+      letter-spacing: 0.0329em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+      border: 2px solid transparent;
+    }
+    .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn--filled {
+      background: var(--color-white);
+      color: var(--color-black);
+      border-color: var(--color-white);
+    }
+    .btn--filled:hover { background: #f0f0f0; }
+    .btn--outline {
+      background: transparent;
+      color: var(--color-white);
+      border-color: var(--color-white);
+    }
+    .btn--outline:hover { background: rgba(255,255,255,0.12); }
+    .hero__explore {
+      position: absolute;
+      right: max(24px, calc((100% - 1440px) / 2 + 234px));
+      bottom: 71px;
+      z-index: 2;
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      color: var(--color-white);
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 90%;
+      text-decoration: underline;
+      transition: opacity 0.2s ease;
+    }
+    .hero__explore:hover { opacity: 0.8; }
+    .hero__explore svg { width: 12px; height: 12px; flex-shrink: 0; margin-bottom: 2px; }
+
+    /* ── PARTNERS ── */
+    .partners {
+      padding: 150px var(--content-padding) 80px;
+    }
+    .partners__title {
+      font-family: var(--font-inter-tight);
+      font-weight: 400;
+      font-size: 72px;
+      line-height: 99%;
+      color: var(--color-black);
+      max-width: 917px;
+      margin-bottom: 40px;
+      white-space: pre-line;
+    }
+    .partners__track-wrap {
+      overflow: hidden;
+      width: calc(100% + var(--content-padding));
+      margin-left: calc(var(--content-padding) * -1);
+    }
+    .partners__track {
+      display: flex;
+      width: max-content;
+      animation: marquee 40s linear infinite;
+    }
+    .partners__track:hover { animation-play-state: paused; }
+    .partners__row {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      padding-right: 60px;
+    }
+    .partners__logo { height: 80px; width: auto; object-fit: contain; }
+    .partners__logo--sm { height: 80px; max-width: 64px; }
+    .partners__logo--md { height: 80px; max-width: 124px; }
+    .partners__logo--lg { height: 80px; max-width: 273px; }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      padding: 0 var(--content-padding) 80px;
+      display: grid;
+      grid-template-columns: 509px 1fr;
+      gap: 39px;
+      align-items: start;
+    }
+    .about__heading {
+      font-weight: 400;
+      font-size: 72px;
+      line-height: 69px;
+      color: var(--color-black);
+      margin-bottom: 24px;
+    }
+    .about__text {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+      color: var(--color-text-body);
+      margin-bottom: 16px;
+    }
+    .about__list {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+      color: var(--color-text-body);
+      white-space: pre-line;
+    }
+    .about__cards {
+      display: grid;
+      grid-template-columns: 353px 352px;
+      gap: 25px 25px;
+    }
+    .about__card {
+      background: var(--color-white);
+      border: 0.8px solid var(--color-border-card);
+      border-radius: 16px;
+      padding: 25px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .about__card--wide { grid-column: 1 / -1; max-width: 731px; }
+    .about__card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: var(--color-accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+    }
+    .about__card-icon img { width: 20px; height: 20px; }
+    .about__card-title {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--color-black);
+    }
+    .about__card-desc {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22.75px;
+      color: var(--color-text-muted);
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      padding: 0 var(--content-padding) 80px;
+    }
+    .how__title {
+      font-weight: 400;
+      font-size: 72px;
+      line-height: 57.74px;
+      letter-spacing: -0.0182em;
+      color: var(--color-text-primary);
+      margin-bottom: 16px;
+    }
+    .how__subtitle {
+      font-family: var(--font-inter);
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 25.2px;
+      color: var(--color-text-body);
+      max-width: 828px;
+      margin-bottom: 50px;
+    }
+    .how__steps {
+      display: grid;
+      grid-template-columns: repeat(3, 395px);
+      gap: 46px;
+      margin-bottom: 43px;
+    }
+    .step-card {
+      position: relative;
+      background: var(--color-white);
+      border: 0.8px solid var(--color-border-step);
+      border-radius: 16px;
+      height: 257px;
+      overflow: hidden;
+    }
+    .step-card__bg-num {
+      position: absolute;
+      right: 20px;
+      bottom: -6px;
+      font-family: var(--font-inter);
+      font-weight: 900;
+      font-size: 96px;
+      line-height: 96px;
+      color: var(--color-step-number);
+      opacity: 0.04;
+      pointer-events: none;
+    }
+    .step-card__inner { padding: 28px; }
+    .step-card__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .step-card__badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 33px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--color-accent-soft);
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0.05em;
+      color: var(--color-accent-dark);
+    }
+    .step-card__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--color-accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-card__icon img { width: 22px; height: 22px; }
+    .step-card__title {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 27px;
+      color: var(--color-text-primary);
+      margin-bottom: 10px;
+    }
+    .step-card__desc {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22.75px;
+      color: var(--color-text-step);
+      margin-bottom: 24px;
+      max-width: 328px;
+    }
+    .step-card__bars {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .step-card__bar {
+      height: 2px;
+      border-radius: 999px;
+      background: var(--color-accent);
+    }
+    .step-card__bar--lg { width: 32px; }
+    .step-card__bar--md { width: 12px; opacity: 0.4; }
+    .step-card__bar--sm { width: 6px; opacity: 0.2; }
+
+    /* ── VENDOR FORM ── */
+    .vendor {
+      border: 1px solid var(--color-border-step);
+      border-radius: 24px;
+      background: var(--color-white);
+      display: grid;
+      grid-template-columns: 441px 1fr;
+      overflow: hidden;
+      min-height: 535px;
+    }
+    .vendor__promo {
+      position: relative;
+      background: linear-gradient(135deg, var(--color-vendor-gradient-start) 0%, var(--color-vendor-gradient-end) 100%);
+      padding: 40px 39px;
+      overflow: hidden;
+    }
+    .vendor__promo-blob {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--color-vendor-circle);
+      pointer-events: none;
+    }
+    .vendor__promo-blob--1 { width: 256px; height: 256px; top: -63px; right: -63px; }
+    .vendor__promo-blob--2 { width: 288px; height: 288px; bottom: -40px; left: -40px; }
+    .vendor__promo-blob--3 {
+      width: 192px; height: 192px;
+      top: 212px; left: 124px;
+      background: rgba(255,255,255,0.03);
+      filter: blur(128px);
+    }
+    .vendor__promo-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: var(--color-vendor-icon-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .vendor__promo-icon img { width: 28px; height: 28px; }
+    .vendor__promo-title {
+      font-weight: 400;
+      font-size: 72px;
+      line-height: 72.6px;
+      color: var(--color-white);
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .vendor__promo-sub {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22.75px;
+      color: var(--color-vendor-text-sub);
+      margin-bottom: 36px;
+      max-width: 361px;
+      position: relative;
+      z-index: 1;
+    }
+    .vendor__benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .vendor__benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      min-height: 20px;
+    }
+    .vendor__benefit img { width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; }
+    .vendor__benefit span {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      color: var(--color-vendor-text-list);
+    }
+    .vendor__form-wrap {
+      padding: 40px 40px 32px;
+    }
+    .vendor__form-title {
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 100%;
+      color: var(--color-black);
+      margin-bottom: 28px;
+      max-width: 648px;
+    }
+    .vendor__form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 21px;
+    }
+    .form-field { display: flex; flex-direction: column; gap: 8px; }
+    .form-field label {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-black);
+    }
+    .form-input-wrap { position: relative; }
+    .form-input-wrap svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      background: var(--color-input-bg);
+      border: 0.8px solid var(--color-border-input);
+      border-radius: 14px;
+      padding: 10px 16px 10px 40px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--color-black);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .form-textarea {
+      min-height: 82px;
+      resize: vertical;
+      padding-top: 10px;
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: var(--color-input-placeholder); }
+    .form-input:focus,
+    .form-textarea:focus { border-color: var(--color-accent); }
+    .form-field--full { grid-column: 1 / -1; }
+    .form-submit {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 241px;
+      height: 52px;
+      margin-top: 8px;
+      background: var(--color-white);
+      border: 1px solid var(--color-border-input);
+      border-radius: 37px;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 14px;
+      color: var(--color-black);
+      cursor: pointer;
+      overflow: hidden;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .form-submit:hover { border-color: var(--color-accent); transform: translateY(-1px); }
+    .form-submit::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(255,255,255,0.1) 50%, rgba(0,0,0,0) 100%);
+      pointer-events: none;
+    }
+    .form-submit svg { width: 16px; height: 16px; margin-left: 8px; }
+    .form-legal {
+      margin-top: 12px;
+      font-family: var(--font-inter);
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      color: var(--color-black);
+      text-align: center;
+    }
+    .form-legal a {
+      color: var(--color-accent);
+      transition: opacity 0.2s ease;
+    }
+    .form-legal a:hover { opacity: 0.75; }
+
+    /* ── FOOTER ── */
+    .footer {
+      position: relative;
+      margin-top: 80px;
+    }
+    .footer__download {
+      position: relative;
+      background: var(--color-black);
+      padding: 90px var(--content-padding) 80px;
+      min-height: 525px;
+    }
+    .footer__phone {
+      position: absolute;
+      right: max(24px, calc((100% - 1440px) / 2 + 144px));
+      top: 0;
+      width: 438px;
+      max-width: 42%;
+      height: auto;
+      pointer-events: none;
+    }
+    .footer__download-content {
+      max-width: 582px;
+      padding-bottom: 48px;
+      position: relative;
+      z-index: 1;
+    }
+    .footer__download-title {
+      font-weight: 600;
+      font-size: 44px;
+      line-height: 120%;
+      color: var(--color-white);
+      margin-bottom: 16px;
+    }
+    .footer__download-text {
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 110%;
+      color: var(--color-text-download-sub);
+      margin-bottom: 32px;
+      max-width: 582px;
+    }
+    .footer__badges img { height: 52px; width: auto; }
+    .footer__contact {
+      padding: 48px var(--content-padding) 40px;
+      display: grid;
+      grid-template-columns: 418px 365px 269px;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1280px;
+      margin: 0 auto;
+      background: var(--color-bg-page);
+    }
+    .footer__col { display: flex; flex-direction: column; gap: 20px; }
+    .footer__col--social { align-items: flex-end; }
+    .footer__label {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 110%;
+      color: var(--color-text-footer-label);
+    }
+    .footer__label--right { text-align: right; }
+    .footer__headline {
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 110%;
+      color: var(--color-text-footer-body);
+    }
+    .footer__contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 110%;
+      color: var(--color-text-footer-body);
+      transition: color 0.2s ease;
+    }
+    .footer__contact-item:hover { color: var(--color-black); }
+    .footer__contact-item svg { width: 24px; height: 24px; flex-shrink: 0; }
+    .footer__social img { height: 48px; width: auto; }
+    .footer__bottom {
+      padding: 24px var(--content-padding) 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      max-width: 1280px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      background: var(--color-bg-page);
+    }
+    .footer__brand-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer__logo img { height: 42px; width: auto; }
+    .footer__copyright {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 157%;
+      letter-spacing: 0.0083em;
+      color: var(--color-text-footer-label);
+    }
+    .footer__copyright svg { width: 16px; height: 16px; }
+    .footer__lang {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      width: 126px;
+      height: 48px;
+      padding: 8px 11px;
+      border-radius: 40px;
+      background: var(--color-white);
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 26px;
+      letter-spacing: 0.0329em;
+      text-transform: uppercase;
+      color: var(--color-black);
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+    .footer__lang:hover { opacity: 0.85; }
+    .footer__lang svg { width: 18px; height: 18px; }
+    .footer__powered {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 151px;
+      height: 48px;
+      padding: 12px 16px;
+      border: 1px solid var(--color-black);
+      border-radius: 16px;
+      background: transparent;
+      transition: background 0.2s ease;
+    }
+    .footer__powered:hover { background: rgba(0,0,0,0.03); }
+    .footer__powered-label {
+      font-family: var(--font-roboto);
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 100%;
+      color: var(--color-black);
+    }
+    .footer__powered img { height: 16px; width: auto; }
+
+    /* Language switcher (hero + footer) */
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      min-width: 126px;
+      height: 48px;
+      padding: 8px 11px;
+      border-radius: 40px;
+      background: var(--color-white);
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 26px;
+      letter-spacing: 0.0329em;
+      text-transform: uppercase;
+      color: var(--color-black);
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s ease;
+    }
+    .lang-switch:hover { opacity: 0.85; }
+    .lang-switch svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .lang-switch--hero {
+      position: absolute;
+      top: 32px;
+      right: max(24px, calc((100% - 1440px) / 2 + 80px));
+      z-index: 3;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      color: var(--color-white);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+    .lang-switch--hero:hover { background: rgba(255, 255, 255, 0.25); opacity: 1; }
+
+    /* ── RTL (Arabic) ── */
+    html[dir="rtl"] body { font-family: var(--font-arabic); }
+    html[dir="rtl"] .btn,
+    html[dir="rtl"] .form-field label,
+    html[dir="rtl"] .footer__lang,
+    html[dir="rtl"] .lang-switch { letter-spacing: 0; text-transform: none; }
+    html[dir="rtl"] .hero__explore {
+      right: auto;
+      left: max(24px, calc((100% - 1440px) / 2 + 234px));
+    }
+    html[dir="rtl"] .hero__explore svg { transform: scaleX(-1); }
+    html[dir="rtl"] .lang-switch--hero {
+      right: auto;
+      left: max(24px, calc((100% - 1440px) / 2 + 80px));
+    }
+    html[dir="rtl"] .partners__track-wrap {
+      margin-left: 0;
+      margin-right: calc(var(--content-padding) * -1);
+    }
+    html[dir="rtl"] .partners__row { padding-right: 0; padding-left: 60px; }
+    html[dir="rtl"] .step-card__bg-num { right: auto; left: 20px; }
+    html[dir="rtl"] .form-input-wrap svg {
+      left: auto;
+      right: 12px;
+    }
+    html[dir="rtl"] .form-input,
+    html[dir="rtl"] .form-textarea {
+      padding: 10px 40px 10px 16px;
+      text-align: right;
+    }
+    html[dir="rtl"] .form-submit svg { margin-left: 0; margin-right: 8px; transform: scaleX(-1); }
+    html[dir="rtl"] .footer__phone {
+      right: auto;
+      left: max(24px, calc((100% - 1440px) / 2 + 144px));
+    }
+    html[dir="rtl"] .footer__col--social { align-items: flex-start; }
+    html[dir="rtl"] .footer__label--right { text-align: left; }
+    html[dir="rtl"] .about__heading,
+    html[dir="rtl"] .how__title,
+    html[dir="rtl"] .partners__title,
+    html[dir="rtl"] .vendor__promo-title,
+    html[dir="rtl"] .vendor__form-title,
+    html[dir="rtl"] .about__left,
+    html[dir="rtl"] .how__subtitle { text-align: right; }
+    html[dir="rtl"] .hero__title { font-family: var(--font-arabic); }
+
+    @media (max-width: 1279px) {
+      html[dir="rtl"] .hero__explore { left: 48px; }
+      html[dir="rtl"] .lang-switch--hero { left: 48px; }
+    }
+
+    /* ── TABLET ── */
+    @media (max-width: 1279px) {
+      :root { --content-padding: 48px; }
+      .hero { min-height: 720px; }
+      .hero__title { font-size: 64px; }
+      .hero__explore { right: 48px; bottom: 48px; }
+      .partners__title { font-size: 52px; }
+      .about {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .about__heading { font-size: 52px; line-height: 1.05; }
+      .about__cards {
+        grid-template-columns: 1fr 1fr;
+      }
+      .about__card--wide { max-width: none; }
+      .how__title { font-size: 52px; line-height: 1.05; }
+      .how__steps {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .step-card { height: auto; min-height: 257px; }
+      .vendor {
+        grid-template-columns: 1fr;
+      }
+      .vendor__promo-title { font-size: 48px; line-height: 1.05; }
+      .footer__phone {
+        position: relative;
+        right: auto;
+        top: auto;
+        max-width: 280px;
+        margin: 32px auto 0;
+        display: block;
+      }
+      .footer__download { min-height: auto; padding-bottom: 40px; }
+      .footer__contact {
+        grid-template-columns: 1fr 1fr;
+      }
+      .footer__col--social {
+        grid-column: 1 / -1;
+        align-items: flex-start;
+      }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 767px) {
+      :root { --content-padding: 24px; }
+      .hero { min-height: 600px; }
+      .hero__content { padding: 80px 16px 100px; gap: 24px; }
+      .hero__title { font-size: 40px; }
+      .hero__actions { flex-direction: column; width: 100%; }
+      .btn { width: 100%; max-width: 280px; }
+      .hero__explore {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin-top: 16px;
+        justify-content: center;
+      }
+      .partners { padding-top: 80px; }
+      .partners__title { font-size: 36px; }
+      .partners__row { gap: 32px; }
+      .about__heading { font-size: 36px; }
+      .about__cards { grid-template-columns: 1fr; }
+      .how__title { font-size: 36px; }
+      .form-row { grid-template-columns: 1fr; }
+      .vendor__form-wrap { padding: 24px; }
+      .vendor__promo { padding: 32px 24px; }
+      .vendor__promo-title { font-size: 36px; }
+      .footer__download-title { font-size: 32px; }
+      .footer__contact { grid-template-columns: 1fr; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Hero">
+      <img class="hero__bg" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cc1a9b0d-d0a6-4a0e-bfb9-9ac64aaa212f" alt="" data-i18n-alt="hero.bgAlt" width="1440" height="968">
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <button class="lang-switch lang-switch--hero" type="button" id="lang-toggle-hero" aria-label="Switch language">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3c2.5 2.5 4 5.5 4 9s-1.5 6.5-4 9M12 3c-2.5 2.5-4 5.5-4 9s1.5 6.5 4 9" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span id="lang-label-hero">AR</span>
+      </button>
+      <div class="hero__content">
+        <img class="hero__logo" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/3d23c792-a9ba-4cfb-bedd-367cd3188e52" alt="Mokanik" width="363" height="88">
+        <img class="hero__divider" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/4c8a9c3a-0b15-4d20-aad4-eb0aa0342c9e" alt="" aria-hidden="true" width="439" height="10">
+        <h1 class="hero__title" data-i18n="hero.title">YOUR VENUE,
+YOUR MOMENT.</h1>
+        <div class="hero__actions">
+          <button class="btn btn--filled" type="button" data-i18n="hero.btnCall">Schedule a Call</button>
+          <button class="btn btn--outline" type="button" data-i18n="hero.btnVendor">Become a Vendor</button>
+        </div>
+      </div>
+      <a class="hero__explore" href="#partners">
+        <span data-i18n="hero.explore">Start Exploring</span>
+        <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </section>
+
+    <!-- PARTNERS -->
+    <section class="partners" id="partners" aria-label="Trusted partners">
+      <h2 class="partners__title" data-i18n="partners.title">Trusted by leading
+venues &amp; partners</h2>
+      <div class="partners__track-wrap">
+        <div class="partners__track">
+          <div class="partners__row">
+            <img class="partners__logo partners__logo--sm" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f7e5866f-199f-44d4-8870-0c58cc2e9bd3" alt="Al Msiyak" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/5de9cad6-44fc-4699-bb00-de01fffa762b" alt="Weco" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/9fbeb868-0e8a-4486-9c72-9f33913047e5" alt="Kuwait Continental Hotel" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cb216562-8343-4f33-ba01-12003467c5ce" alt="Masaraat Luxury Hall" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/147fd42e-0361-4a24-950f-7fbc68612168" alt="Costa Del Sol Hotel" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/5a807185-76be-4d61-a4b5-df06454b53b7" alt="Elevation Coworking" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cd3a2d66-4b75-440d-96cc-a9f97de93686" alt="Silver Ballroom" height="80">
+            <img class="partners__logo partners__logo--lg" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/901ed4a3-aba6-411a-ad01-0940b79f0035" alt="Larom Birthday Lounge" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/b4f30dc8-b626-4214-b1f3-0f216ede3917" alt="Sedra Continental Hotel" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/acf56db0-9afc-4928-8f4d-4f4e6810bd57" alt="Luxury Lounge" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/0891adb4-371e-4b1e-8ad7-ebe3c86e2671" alt="Partner venue" height="80">
+          </div>
+          <div class="partners__row" aria-hidden="true">
+            <img class="partners__logo partners__logo--sm" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f7e5866f-199f-44d4-8870-0c58cc2e9bd3" alt="" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/5de9cad6-44fc-4699-bb00-de01fffa762b" alt="" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/9fbeb868-0e8a-4486-9c72-9f33913047e5" alt="" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cb216562-8343-4f33-ba01-12003467c5ce" alt="" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/147fd42e-0361-4a24-950f-7fbc68612168" alt="" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/5a807185-76be-4d61-a4b5-df06454b53b7" alt="" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cd3a2d66-4b75-440d-96cc-a9f97de93686" alt="" height="80">
+            <img class="partners__logo partners__logo--lg" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/901ed4a3-aba6-411a-ad01-0940b79f0035" alt="" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/b4f30dc8-b626-4214-b1f3-0f216ede3917" alt="" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/acf56db0-9afc-4928-8f4d-4f4e6810bd57" alt="" height="80">
+            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/0891adb4-371e-4b1e-8ad7-ebe3c86e2671" alt="" height="80">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" aria-label="What is Mokanik">
+      <div class="about__left">
+        <h2 class="about__heading" data-i18n="about.heading">What is Mokanik?</h2>
+        <p class="about__text" data-i18n="about.text">Mokanik isn't just a booking platform — we're the architects of unforgettable experiences. From intimate gatherings to grand celebrations, we connect you with Kuwait's most coveted venues and trusted vendors in seconds.</p>
+        <p class="about__list" data-i18n="about.list">  - Weddings:  "I do" deserves the perfect backdrop
+  - Corporate:  Boardrooms that command attention
+  - Exhibitions: Spaces that stop the scroll
+  - Private Parties: Celebrate like it's legendary</p>
+      </div>
+      <div class="about__cards">
+        <article class="about__card">
+          <div class="about__card-icon"><img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/5183d89d-11c2-4b37-871a-8150d3c498e4" alt="" width="20" height="20"></div>
+          <h3 class="about__card-title" data-i18n="about.card1.title">Vendor Network</h3>
+          <p class="about__card-desc" data-i18n="about.card1.desc">Mokanik connects you to Kuwait's most trusted caterers, decorators, and event professionals. Every partner is handpicked and verified, so your event is built on reliability from start to finish.</p>
+        </article>
+        <article class="about__card">
+          <div class="about__card-icon"><img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/2107c44f-7d90-404f-8a65-cc4fe79fd0bc" alt="" width="20" height="20"></div>
+          <h3 class="about__card-title" data-i18n="about.card2.title">Growth Intelligence</h3>
+          <p class="about__card-desc" data-i18n="about.card2.desc">Mokanik turns raw data into real opportunity. Venues optimize pricing and fill empty calendars, while hosts discover trending spaces and hidden gems tailored to their vision.</p>
+        </article>
+        <article class="about__card about__card--wide">
+          <div class="about__card-icon"><img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/1935e1d6-1346-454c-a60c-2a048d592631" alt="" width="20" height="20"></div>
+          <h3 class="about__card-title" data-i18n="about.card3.title">Enterprise Trust</h3>
+          <p class="about__card-desc" data-i18n="about.card3.desc">Mokanik protects every transaction with bank-grade encryption and strict compliance standards. From first inquiry to final payment, your event planning stays secure and stress-free.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how" aria-label="How it works">
+      <h2 class="how__title" data-i18n="how.title">How It  Works?</h2>
+      <p class="how__subtitle" data-i18n="how.subtitle">Three effortless steps to bring your perfect event to life — from discovery to celebration.</p>
+      <div class="how__steps">
+        <article class="step-card">
+          <span class="step-card__bg-num" aria-hidden="true">01</span>
+          <div class="step-card__inner">
+            <div class="step-card__top">
+              <span class="step-card__badge" data-i18n="how.step1.badge">Step 01</span>
+              <div class="step-card__icon"><img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/90389cda-a857-46df-9bce-01456d391797" alt="" width="22" height="22"></div>
+            </div>
+            <h3 class="step-card__title" data-i18n="how.step1.title">Find &amp; Compare</h3>
+            <p class="step-card__desc" data-i18n="how.step1.desc">Discover venues and vendors that match your needs. Compare pricing, reviews, and availability all in one place.</p>
+            <div class="step-card__bars" aria-hidden="true">
+              <span class="step-card__bar step-card__bar--lg"></span>
+              <span class="step-card__bar step-card__bar--md"></span>
+              <span class="step-card__bar step-card__bar--sm"></span>
+            </div>
+          </div>
+        </article>
+        <article class="step-card">
+          <span class="step-card__bg-num" aria-hidden="true">02</span>
+          <div class="step-card__inner">
+            <div class="step-card__top">
+              <span class="step-card__badge" data-i18n="how.step2.badge">Step 02</span>
+              <div class="step-card__icon"><img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/ef9fa378-bd69-45bf-a68b-47033294e324" alt="" width="22" height="22"></div>
+            </div>
+            <h3 class="step-card__title" data-i18n="how.step2.title">Book &amp; Manage</h3>
+            <p class="step-card__desc" data-i18n="how.step2.desc">Book instantly and manage every detail from your personalized dashboard. Everything organized, always.</p>
+            <div class="step-card__bars" aria-hidden="true">
+              <span class="step-card__bar step-card__bar--lg"></span>
+              <span class="step-card__bar step-card__bar--md"></span>
+              <span class="step-card__bar step-card__bar--sm"></span>
+            </div>
+          </div>
+        </article>
+        <article class="step-card">
+          <span class="step-card__bg-num" aria-hidden="true">03</span>
+          <div class="step-card__inner">
+            <div class="step-card__top">
+              <span class="step-card__badge" data-i18n="how.step3.badge">Step 03</span>
+              <div class="step-card__icon"><img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/647735bb-1e89-40b7-9420-1625a3f49a0d" alt="" width="22" height="22"></div>
+            </div>
+            <h3 class="step-card__title" data-i18n="how.step3.title">Host &amp; Celebrate</h3>
+            <p class="step-card__desc" data-i18n="how.step3.desc">Relax and focus on your event. We'll handle every last detail so you can enjoy every single moment.</p>
+            <div class="step-card__bars" aria-hidden="true">
+              <span class="step-card__bar step-card__bar--lg"></span>
+              <span class="step-card__bar step-card__bar--md"></span>
+              <span class="step-card__bar step-card__bar--sm"></span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- VENDOR FORM -->
+      <div class="vendor" id="vendor">
+        <div class="vendor__promo">
+          <div class="vendor__promo-blob vendor__promo-blob--1" aria-hidden="true"></div>
+          <div class="vendor__promo-blob vendor__promo-blob--2" aria-hidden="true"></div>
+          <div class="vendor__promo-blob vendor__promo-blob--3" aria-hidden="true"></div>
+          <div class="vendor__promo-icon"><img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/669ef4fa-f679-411e-8dae-6fc43792db2b" alt="" width="28" height="28"></div>
+          <h3 class="vendor__promo-title" data-i18n="vendor.promoTitle">Become a Vendor</h3>
+          <p class="vendor__promo-sub" data-i18n="vendor.promoSub">Join Kuwait's growing venue network and start receiving bookings today</p>
+          <ul class="vendor__benefits">
+            <li class="vendor__benefit"><img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/7ec1d29d-3103-4830-b9fd-e695acf69a5c" alt="" width="16" height="16"><span data-i18n="vendor.benefit1">Your bookings, organized — no more chaos</span></li>
+            <li class="vendor__benefit"><img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/748b068a-5771-432e-b349-59c28f78c990" alt="" width="16" height="16"><span data-i18n="vendor.benefit2">Clients reach you faster, with everything they need</span></li>
+            <li class="vendor__benefit"><img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/2f58f081-f082-4cb0-b7a1-22b88d238de2" alt="" width="16" height="16"><span data-i18n="vendor.benefit3">Full transparency between you and your guests</span></li>
+            <li class="vendor__benefit"><img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/65036c9f-07f0-49eb-889f-52e0a60cca99" alt="" width="16" height="16"><span data-i18n="vendor.benefit4">More than a listing — a smarter way to manage your venue</span></li>
+          </ul>
+        </div>
+        <div class="vendor__form-wrap">
+          <h3 class="vendor__form-title" data-i18n-html="vendor.formTitle">Expand your reach and boost your bookings by joining<br>our trusted vendor network.</h3>
+          <form class="vendor__form" action="#" method="post">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="full-name" data-i18n="form.fullName">Full Name *</label>
+                <div class="form-input-wrap">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="5" r="3" stroke="#737373" stroke-width="1.2"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#737373" stroke-width="1.2"/></svg>
+                  <input class="form-input" id="full-name" type="text" data-i18n-placeholder="form.fullNamePh" placeholder="Full Name" required>
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="company" data-i18n="form.company">Company Name *</label>
+                <div class="form-input-wrap">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="4" width="12" height="10" rx="1" stroke="#737373" stroke-width="1.2"/><path d="M5 4V3a3 3 0 016 0v1" stroke="#737373" stroke-width="1.2"/></svg>
+                  <input class="form-input" id="company" type="text" data-i18n-placeholder="form.companyPh" placeholder="Your Business Name" required>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="email" data-i18n="form.email">Email Address *</label>
+                <div class="form-input-wrap">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="1" stroke="#737373" stroke-width="1.2"/><path d="M1 4l7 5 7-5" stroke="#737373" stroke-width="1.2"/></svg>
+                  <input class="form-input" id="email" type="email" data-i18n-placeholder="form.emailPh" placeholder="you@business.com" required>
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="phone" data-i18n="form.phone">Phone Number</label>
+                <div class="form-input-wrap">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 2h3l1 3-2 1s1 3 3 5 5 3 5 3l1-2h3v3c0 1-1 2-2 2C7 15 1 9 1 3c0-1 1-2 2-2z" stroke="#737373" stroke-width="1.2"/></svg>
+                  <input class="form-input" id="phone" type="tel" data-i18n-placeholder="form.phonePh" placeholder="+965 XXXX XXXX">
+                </div>
+              </div>
+            </div>
+            <div class="form-field form-field--full">
+              <label for="about" data-i18n="form.about">About Your Business</label>
+              <div class="form-input-wrap">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" style="top:14px;transform:none"><rect x="3" y="2" width="10" height="12" rx="1" stroke="#737373" stroke-width="1.2"/><path d="M5 6h6M5 9h4" stroke="#737373" stroke-width="1.2"/></svg>
+                <textarea class="form-textarea" id="about" data-i18n-placeholder="form.aboutPh" placeholder="Tell us what makes your business special..."></textarea>
+              </div>
+            </div>
+            <button class="form-submit" type="submit">
+              <span data-i18n="form.submit">Submit Application</span>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <p class="form-legal" data-i18n-html="form.legal">By submitting, you agree to our <a href="#">Terms of Service</a> &amp; <a href="#">Privacy Policy</a></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer__download">
+        <div class="footer__download-content">
+          <h2 class="footer__download-title" data-i18n="footer.downloadTitle">Download the app today</h2>
+          <p class="footer__download-text" data-i18n-html="footer.downloadText">Discover and book the perfect venue on the go.<br>Available for iOS and Android.</p>
+          <div class="footer__badges">
+            <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/b9c9f28a-42a1-4463-bc2d-40600d9a6d32" alt="" data-i18n-alt="footer.badgesAlt" height="52">
+          </div>
+        </div>
+        <img class="footer__phone" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/6380a361-e836-47c6-bdeb-35e8915529d6" alt="" data-i18n-alt="footer.phoneAlt" width="438" height="525">
+      </div>
+      <div class="footer__contact">
+        <div class="footer__col">
+          <p class="footer__label" data-i18n="footer.contactLabel">Contact us</p>
+          <p class="footer__headline" data-i18n="footer.contactHeadline">Let's make your next event unforgettable!</p>
+        </div>
+        <div class="footer__col">
+          <p class="footer__label" data-i18n="footer.talkLabel">Let's Talk</p>
+          <a class="footer__contact-item" href="tel:+96598819245">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.74 4.37h14.9v14.9H4.74z" stroke="#171717" stroke-width="1.5" style="display:none"/><path d="M6 4.5c0-1 .8-1.8 1.8-1.8h8.4c1 0 1.8.8 1.8 1.8v15c0 1-.8 1.8-1.8 1.8H7.8c-1 0-1.8-.8-1.8-1.8v-15z" stroke="#171717" stroke-width="1.5"/><circle cx="12" cy="18" r="1" fill="#171717"/></svg>
+            +965 9881 9245
+          </a>
+          <a class="footer__contact-item" href="mailto:hello@mokanik.com">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1" stroke="#171717" stroke-width="1.5"/><path d="M3 7l9 6 9-6" stroke="#171717" stroke-width="1.5"/></svg>
+            hello@mokanik.com
+          </a>
+        </div>
+        <div class="footer__col footer__col--social">
+          <p class="footer__label footer__label--right" data-i18n="footer.socialLabel">Social Accounts</p>
+          <div class="footer__social">
+            <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/939190f2-f44a-476c-9961-d95954fb9767" alt="" data-i18n-alt="footer.socialAlt" height="48">
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="footer__brand-row">
+          <div class="footer__logo">
+            <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/2e8bc496-564e-48a9-9022-f5db78944408" alt="Mokanik" height="42">
+          </div>
+          <div class="footer__copyright">
+            <span data-i18n="footer.copyright">Copyright</span>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1"/><path d="M10.5 6.5a2.5 2.5 0 10-2 4.2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+            <span>2026</span>
+            <span data-i18n="footer.rights">All rights reserved</span>
+          </div>
+        </div>
+        <div class="footer__brand-row">
+          <button class="footer__lang lang-switch" type="button" id="lang-toggle-footer" aria-label="Switch language">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3c2.5 2.5 4 5.5 4 9s-1.5 6.5-4 9M12 3c-2.5 2.5-4 5.5-4 9s1.5 6.5 4 9" stroke="currentColor" stroke-width="1.5"/></svg>
+            <span id="lang-label-footer">EN</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="footer__powered" href="https://nizek.com" target="_blank" rel="noopener noreferrer">
+            <div>
+              <span class="footer__powered-label" data-i18n="footer.poweredBy">Powered By</span>
+            </div>
+            <svg width="60" height="16" viewBox="0 0 60 16" fill="none" aria-label="Nizek"><text x="0" y="13" font-family="Roboto,sans-serif" font-weight="500" font-size="10" fill="#111">Nizek</text><circle cx="56" cy="8" r="3" fill="#FF326A"/></svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        'meta.title': 'Mokanik — Your Venue, Your Moment',
+        'hero.bgAlt': 'Elegant evening venue',
+        'hero.title': 'YOUR VENUE,\nYOUR MOMENT.',
+        'hero.btnCall': 'Schedule a Call',
+        'hero.btnVendor': 'Become a Vendor',
+        'hero.explore': 'Start Exploring',
+        'partners.title': 'Trusted by leading\nvenues & partners',
+        'about.heading': 'What is Mokanik?',
+        'about.text': "Mokanik isn't just a booking platform — we're the architects of unforgettable experiences. From intimate gatherings to grand celebrations, we connect you with Kuwait's most coveted venues and trusted vendors in seconds.",
+        'about.list': '  - Weddings:  "I do" deserves the perfect backdrop\n  - Corporate:  Boardrooms that command attention\n  - Exhibitions: Spaces that stop the scroll\n  - Private Parties: Celebrate like it\'s legendary',
+        'about.card1.title': 'Vendor Network',
+        'about.card1.desc': "Mokanik connects you to Kuwait's most trusted caterers, decorators, and event professionals. Every partner is handpicked and verified, so your event is built on reliability from start to finish.",
+        'about.card2.title': 'Growth Intelligence',
+        'about.card2.desc': 'Mokanik turns raw data into real opportunity. Venues optimize pricing and fill empty calendars, while hosts discover trending spaces and hidden gems tailored to their vision.',
+        'about.card3.title': 'Enterprise Trust',
+        'about.card3.desc': 'Mokanik protects every transaction with bank-grade encryption and strict compliance standards. From first inquiry to final payment, your event planning stays secure and stress-free.',
+        'how.title': 'How It  Works?',
+        'how.subtitle': 'Three effortless steps to bring your perfect event to life — from discovery to celebration.',
+        'how.step1.badge': 'Step 01',
+        'how.step1.title': 'Find & Compare',
+        'how.step1.desc': 'Discover venues and vendors that match your needs. Compare pricing, reviews, and availability all in one place.',
+        'how.step2.badge': 'Step 02',
+        'how.step2.title': 'Book & Manage',
+        'how.step2.desc': 'Book instantly and manage every detail from your personalized dashboard. Everything organized, always.',
+        'how.step3.badge': 'Step 03',
+        'how.step3.title': 'Host & Celebrate',
+        'how.step3.desc': "Relax and focus on your event. We'll handle every last detail so you can enjoy every single moment.",
+        'vendor.promoTitle': 'Become a Vendor',
+        'vendor.promoSub': "Join Kuwait's growing venue network and start receiving bookings today",
+        'vendor.benefit1': 'Your bookings, organized — no more chaos',
+        'vendor.benefit2': 'Clients reach you faster, with everything they need',
+        'vendor.benefit3': 'Full transparency between you and your guests',
+        'vendor.benefit4': 'More than a listing — a smarter way to manage your venue',
+        'vendor.formTitle': 'Expand your reach and boost your bookings by joining<br>our trusted vendor network.',
+        'form.fullName': 'Full Name *',
+        'form.fullNamePh': 'Full Name',
+        'form.company': 'Company Name *',
+        'form.companyPh': 'Your Business Name',
+        'form.email': 'Email Address *',
+        'form.emailPh': 'you@business.com',
+        'form.phone': 'Phone Number',
+        'form.phonePh': '+965 XXXX XXXX',
+        'form.about': 'About Your Business',
+        'form.aboutPh': 'Tell us what makes your business special...',
+        'form.submit': 'Submit Application',
+        'form.legal': 'By submitting, you agree to our <a href="#">Terms of Service</a> &amp; <a href="#">Privacy Policy</a>',
+        'footer.downloadTitle': 'Download the app today',
+        'footer.downloadText': 'Discover and book the perfect venue on the go.<br>Available for iOS and Android.',
+        'footer.badgesAlt': 'Download on App Store and Google Play',
+        'footer.phoneAlt': 'Mokanik mobile app',
+        'footer.contactLabel': 'Contact us',
+        'footer.contactHeadline': "Let's make your next event unforgettable!",
+        'footer.talkLabel': "Let's Talk",
+        'footer.socialLabel': 'Social Accounts',
+        'footer.socialAlt': 'Social media links',
+        'footer.copyright': 'Copyright',
+        'footer.rights': 'All rights reserved',
+        'footer.poweredBy': 'Powered By',
+        'lang.switchTo': 'AR',
+        'lang.current': 'EN'
+      },
+      ar: {
+        'meta.title': 'موكانik — مكانك، لحظتك',
+        'hero.bgAlt': 'قاعة أمسية أنيقة',
+        'hero.title': 'مكانك،\nلحظتك.',
+        'hero.btnCall': 'احجز مكالمة',
+        'hero.btnVendor': 'كن شريكاً',
+        'hero.explore': 'ابدأ الاستكشاف',
+        'partners.title': 'موثوق من قبل\nأبرز الأماكن والشركاء',
+        'about.heading': 'ما هو موكانik؟',
+        'about.text': 'موكانik ليس مجرد منصة حجز — نحن مهندسو التجارب التي لا تُنسى. من التجمعات الحميمة إلى الاحتفالات الكبرى، نربطك بأرقى الأماكن في الكويت وأكثر الموردين موثوقية في ثوانٍ.',
+        'about.list': '  - حفلات الزفاف:  "نعم" تستحق الخلفية المثالية\n  - الفعاليات المؤسسية:  قاعات تجذب الانتباه\n  - المعارض:  مساحات توقف التمرير\n  - الحفلات الخاصة:  احتفل وكأنها أسطورية',
+        'about.card1.title': 'شبكة الموردين',
+        'about.card1.desc': 'يربطك موكانik بأكثر مقدمي الضيافة والديكور ومحترفي الفعاليات موثوقية في الكويت. كل شريك مختار بعناية ومُتحقّق منه، ليبقى حدثك مبنياً على الثقة من البداية إلى النهاية.',
+        'about.card2.title': 'ذكاء النمو',
+        'about.card2.desc': 'يحوّل موكانik البيانات الخام إلى فرص حقيقية. تحسّن الأماكن التسعير وتملأ المواعيد الفارغة، بينما يكتشف المنظمون المساحات الرائجة والجواهر المخفية المناسبة لرؤيتهم.',
+        'about.card3.title': 'ثقة المؤسسات',
+        'about.card3.desc': 'يحمي موكانik كل معاملة بتشفير بمستوى مصرفي ومعايير امتثال صارمة. من أول استفسار إلى الدفع النهائي، يبقى تخطيط حدثك آمناً وخالياً من التوتر.',
+        'how.title': 'كيف يعمل؟',
+        'how.subtitle': 'ثلاث خطوات سهلة لتحويل فعاليتك المثالية إلى واقع — من الاكتشاف إلى الاحتفال.',
+        'how.step1.badge': 'الخطوة 01',
+        'how.step1.title': 'ابحث وقارن',
+        'how.step1.desc': 'اكتشف الأماكن والموردين الذين يناسبون احتياجاتك. قارن الأسعار والمراجعات والتوفر في مكان واحد.',
+        'how.step2.badge': 'الخطوة 02',
+        'how.step2.title': 'احجز وأدر',
+        'how.step2.desc': 'احجز فوراً وأدر كل التفاصيل من لوحة التحكم الشخصية. كل شيء منظم، دائماً.',
+        'how.step3.badge': 'الخطوة 03',
+        'how.step3.title': 'استضف واحتفل',
+        'how.step3.desc': 'استرخِ وركّز على فعاليتك. سنتولى كل التفاصيل حتى تستمتع بكل لحظة.',
+        'vendor.promoTitle': 'كن شريكاً',
+        'vendor.promoSub': 'انضم إلى شبكة الأماكن المتنامية في الكويت وابدأ باستقبال الحجوزات اليوم',
+        'vendor.benefit1': 'حجوزاتك منظمة — لا مزيد من الفوضى',
+        'vendor.benefit2': 'يصل إليك العملاء أسرع، بكل ما يحتاجونه',
+        'vendor.benefit3': 'شفافية كاملة بينك وبين ضيوفك',
+        'vendor.benefit4': 'أكثر من مجرد إدراج — طريقة أذكى لإدارة مكانك',
+        'vendor.formTitle': 'وسّع نطاق وصولك وعزّز حجوزاتك بالانضمام<br>إلى شبكة الموردين الموثوقة لدينا.',
+        'form.fullName': 'الاسم الكامل *',
+        'form.fullNamePh': 'الاسم الكامل',
+        'form.company': 'اسم الشركة *',
+        'form.companyPh': 'اسم نشاطك التجاري',
+        'form.email': 'البريد الإلكتروني *',
+        'form.emailPh': 'you@business.com',
+        'form.phone': 'رقم الهاتف',
+        'form.phonePh': '+965 XXXX XXXX',
+        'form.about': 'عن نشاطك التجاري',
+        'form.aboutPh': 'أخبرنا ما الذي يميز نشاطك التجاري...',
+        'form.submit': 'إرسال الطلب',
+        'form.legal': 'بالإرسال، فإنك توافق على <a href="#">شروط الخدمة</a> و<a href="#">سياسة الخصوصية</a>',
+        'footer.downloadTitle': 'حمّل التطبيق اليوم',
+        'footer.downloadText': 'اكتشف واحجز المكان المثالي أثناء التنقل.<br>متوفر على iOS وAndroid.',
+        'footer.badgesAlt': 'حمّل من App Store وGoogle Play',
+        'footer.phoneAlt': 'تطبيق موكانik للجوال',
+        'footer.contactLabel': 'تواصل معنا',
+        'footer.contactHeadline': 'لنجعل فعاليتك القادمة لا تُنسى!',
+        'footer.talkLabel': 'لنتحدث',
+        'footer.socialLabel': 'حسابات التواصل',
+        'footer.socialAlt': 'روابط وسائل التواصل',
+        'footer.copyright': 'حقوق النشر',
+        'footer.rights': 'جميع الحقوق محفوظة',
+        'footer.poweredBy': 'مدعوم من',
+        'lang.switchTo': 'EN',
+        'lang.current': 'AR'
+      }
+    };
+
+    function getNested(obj, key) {
+      return obj[key];
+    }
+
+    function setLanguage(lang) {
+      const t = translations[lang];
+      if (!t) return;
+
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.title = t['meta.title'];
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const value = getNested(t, key);
+        if (value !== undefined) el.textContent = value;
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        const value = getNested(t, key);
+        if (value !== undefined) el.innerHTML = value;
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        const value = getNested(t, key);
+        if (value !== undefined) el.placeholder = value;
+      });
+
+      document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+        const key = el.getAttribute('data-i18n-alt');
+        const value = getNested(t, key);
+        if (value !== undefined) el.alt = value;
+      });
+
+      document.querySelectorAll('#lang-label-hero, #lang-label-footer').forEach(el => {
+        el.textContent = t['lang.current'];
+      });
+
+      document.querySelectorAll('[id^="lang-toggle"]').forEach(btn => {
+        btn.setAttribute('aria-label', lang === 'ar' ? 'Switch to English' : 'Switch to Arabic');
+      });
+
+      localStorage.setItem('mokanik-lang', lang);
+    }
+
+    function toggleLanguage() {
+      const current = document.documentElement.lang === 'ar' ? 'ar' : 'en';
+      setLanguage(current === 'en' ? 'ar' : 'en');
+    }
+
+    document.getElementById('lang-toggle-hero').addEventListener('click', toggleLanguage);
+    document.getElementById('lang-toggle-footer').addEventListener('click', toggleLanguage);
+
+    const savedLang = localStorage.getItem('mokanik-lang');
+    setLanguage(savedLang === 'ar' ? 'ar' : 'en');
+  </script>
+</body>
+</html>
