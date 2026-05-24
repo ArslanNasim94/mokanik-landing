@@ -251,18 +251,13 @@
     .partners__logo {
       height: 80px;
       width: auto;
+      max-height: 80px;
       object-fit: contain;
+      flex-shrink: 0;
       filter: grayscale(100%);
       opacity: 0.55;
       transition: filter 0.35s ease, opacity 0.35s ease;
     }
-    .partners__logo:hover {
-      filter: grayscale(0%);
-      opacity: 1;
-    }
-    .partners__logo--sm { height: 80px; max-width: 64px; }
-    .partners__logo--md { height: 80px; max-width: 124px; }
-    .partners__logo--lg { height: 80px; max-width: 273px; }
     @keyframes marquee {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -1159,14 +1154,10 @@
       }
       .partners__row { gap: 28px; padding-right: 28px; }
       .partners__track { animation-duration: 22s; }
-      .partners__logo,
-      .partners__logo--sm,
-      .partners__logo--md,
-      .partners__logo--lg {
+      .partners__logo {
         height: 52px;
-        max-width: 110px;
+        max-height: 52px;
       }
-      .partners__logo--lg { max-width: 160px; }
       .about { gap: 32px; }
       .about__heading {
         font-size: clamp(28px, 8vw, 36px);
@@ -1328,30 +1319,30 @@ venues &amp; partners</h2>
       <div class="partners__track-wrap">
         <div class="partners__track">
           <div class="partners__row">
-            <img class="partners__logo partners__logo--sm" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f7e5866f-199f-44d4-8870-0c58cc2e9bd3" alt="Al Msiyak" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/5de9cad6-44fc-4699-bb00-de01fffa762b" alt="Weco" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/9fbeb868-0e8a-4486-9c72-9f33913047e5" alt="Kuwait Continental Hotel" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cb216562-8343-4f33-ba01-12003467c5ce" alt="Masaraat Luxury Hall" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/147fd42e-0361-4a24-950f-7fbc68612168" alt="Costa Del Sol Hotel" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/5a807185-76be-4d61-a4b5-df06454b53b7" alt="Elevation Coworking" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cd3a2d66-4b75-440d-96cc-a9f97de93686" alt="Silver Ballroom" height="80">
-            <img class="partners__logo partners__logo--lg" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/901ed4a3-aba6-411a-ad01-0940b79f0035" alt="Larom Birthday Lounge" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/b4f30dc8-b626-4214-b1f3-0f216ede3917" alt="Sedra Continental Hotel" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/acf56db0-9afc-4928-8f4d-4f4e6810bd57" alt="Luxury Lounge" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/0891adb4-371e-4b1e-8ad7-ebe3c86e2671" alt="Partner venue" height="80">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault.png" alt="Partner logo" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-1.png" alt="Partner logo" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-2.png" alt="Partner logo" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-3.png" alt="Partner logo" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-4.png" alt="Partner logo" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-5.png" alt="Partner logo" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-6.png" alt="Partner logo" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-7.png" alt="Partner logo" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-8.png" alt="Partner logo" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-9.png" alt="Partner logo" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-10.png" alt="Partner logo" height="80" loading="lazy" decoding="async">
           </div>
           <div class="partners__row" aria-hidden="true">
-            <img class="partners__logo partners__logo--sm" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f7e5866f-199f-44d4-8870-0c58cc2e9bd3" alt="" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/5de9cad6-44fc-4699-bb00-de01fffa762b" alt="" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/9fbeb868-0e8a-4486-9c72-9f33913047e5" alt="" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cb216562-8343-4f33-ba01-12003467c5ce" alt="" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/147fd42e-0361-4a24-950f-7fbc68612168" alt="" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/5a807185-76be-4d61-a4b5-df06454b53b7" alt="" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cd3a2d66-4b75-440d-96cc-a9f97de93686" alt="" height="80">
-            <img class="partners__logo partners__logo--lg" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/901ed4a3-aba6-411a-ad01-0940b79f0035" alt="" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/b4f30dc8-b626-4214-b1f3-0f216ede3917" alt="" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/acf56db0-9afc-4928-8f4d-4f4e6810bd57" alt="" height="80">
-            <img class="partners__logo partners__logo--md" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/0891adb4-371e-4b1e-8ad7-ebe3c86e2671" alt="" height="80">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault.png" alt="" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-1.png" alt="" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-2.png" alt="" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-3.png" alt="" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-4.png" alt="" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-5.png" alt="" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-6.png" alt="" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-7.png" alt="" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-8.png" alt="" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-9.png" alt="" height="80" loading="lazy" decoding="async">
+            <img class="partners__logo" src="assets/Partner%20logo/Property%201%3DDefault-10.png" alt="" height="80" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
