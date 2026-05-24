@@ -81,11 +81,10 @@
         opacity: 1;
       }
     }
-    @media (hover: none) {
-      .partners__logo {
-        filter: grayscale(0%);
-        opacity: 0.85;
-      }
+    .partners__logo:active,
+    .partners__logo.partners__logo--color {
+      filter: grayscale(0%);
+      opacity: 1;
     }
 
     .page {
@@ -256,6 +255,9 @@
       flex-shrink: 0;
       filter: grayscale(100%);
       opacity: 0.55;
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
       transition: filter 0.35s ease, opacity 0.35s ease;
     }
     @keyframes marquee {
@@ -1590,5 +1592,20 @@ venues &amp; partners</h2>
 
   </div>
 
+  <script>
+    (function () {
+      if (!window.matchMedia('(hover: none)').matches) return;
+      var track = document.querySelector('.partners__track');
+      if (!track) return;
+      track.addEventListener('touchstart', function (e) {
+        var logo = e.target.closest('.partners__logo');
+        if (!logo) return;
+        track.querySelectorAll('.partners__logo--color').forEach(function (el) {
+          el.classList.remove('partners__logo--color');
+        });
+        logo.classList.add('partners__logo--color');
+      }, { passive: true });
+    })();
+  </script>
 </body>
 </html>
