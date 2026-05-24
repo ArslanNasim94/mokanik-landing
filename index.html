@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mokanik — Your Venue, Your Moment</title>
+  <link rel="preload" as="image" href="assets/hero/hero-bg-mobile.webp" type="image/webp" media="(max-width: 767px)">
+  <link rel="preload" as="image" href="assets/hero/hero-bg.webp" type="image/webp" media="(min-width: 768px)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Libre+Caslon+Display&family=Roboto:wght@500&display=swap" rel="stylesheet">
@@ -104,6 +106,7 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      background: #1a1410;
     }
     .hero__bg {
       position: absolute;
@@ -1297,7 +1300,11 @@
 
     <!-- HERO -->
     <section class="hero" aria-label="Hero">
-      <img class="hero__bg" src="assets/hero/hero-bg.png" alt="Elegant evening venue" width="1440" height="968" fetchpriority="high" decoding="async">
+      <picture>
+        <source media="(max-width: 767px)" srcset="assets/hero/hero-bg-mobile.webp" type="image/webp">
+        <source srcset="assets/hero/hero-bg.webp" type="image/webp">
+        <img class="hero__bg" src="assets/hero/hero-bg.jpg" alt="Elegant evening venue" width="1440" height="968" fetchpriority="high" decoding="sync">
+      </picture>
       <div class="hero__content">
         <img class="hero__logo" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/3d23c792-a9ba-4cfb-bedd-367cd3188e52" alt="Mokanik" width="363" height="88">
         <img class="hero__divider" src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/4c8a9c3a-0b15-4d20-aad4-eb0aa0342c9e" alt="" aria-hidden="true" width="439" height="10">
